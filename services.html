@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Magical Web Development</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reused Styles (Same as index.html) */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A42E6;
+            --dark: #333;
+            --light: #f9f9f9;
+            --accent: #FF6584;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: var(--light);
+            color: var(--dark);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Services Hero */
+        .services-hero {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #6C63FF 0%, #4A42E6 100%);
+            color: white;
+        }
+        .services-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 80px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .service-content {
+            padding: 30px;
+        }
+        .service-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        .price-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .service-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .service-content ul li {
+            margin-bottom: 10px;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+        .service-content ul li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .service-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            align-items: center;
+        }
+        .tech-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        .tech-item img {
+            height: 50px;
+            width: auto;
+            margin-bottom: 10px;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #FF6584 0%, #fc8da1 100%);
+            color: white;
+        }
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 120px 0 60px;
+            }
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none; /* Hamburger menu later */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Magical<span>Web</span></div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="services-hero">
+        <div class="container">
+            <h1>Our Services</h1>
+            <p>From ₹5,000 websites to custom enterprise software – we deliver quality at prices tailored for Indian businesses.</p>
+            <a href="#contact" class="btn">Get Custom Quote</a>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">What We Offer</h2>
+            <div class="services-container">
+                <!-- Website Development -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Website Development">
+                    <div class="service-content">
+                        <h3>Website Development</h3>
+                        <span class="price-tag">Starting from ₹5,000</span>
+                        <p>Professional websites that load fast on Indian networks and convert visitors.</p>
+                        <ul>
+                            <li>Mobile-first responsive design</li>
+                            <li>SEO-friendly structure</li>
+                            <li>WhatsApp/PhonePe integration</li>
+                            <li>1 year free hosting*</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> 5-7 days delivery</span>
+                            <span><i class="fas fa-star"></i> 100+ projects</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Order Now</a>
+                    </div>
+                </div>
+
+                <!-- SEO -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="SEO Services">
+                    <div class="service-content">
+                        <h3>SEO Services</h3>
+                        <span class="price-tag">From ₹3,000/month</span>
+                        <p>Rank higher on Google India with our localized SEO strategies.</p>
+                        <ul>
+                            <li>Keyword research (Hindi/English)</li>
+                            <li>Local business optimization</li>
+                            <li>Monthly ranking reports</li>
+                            <li>Content writing included</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> First results in 30 days</span>
+                            <span><i class="fas fa-star"></i> 80% success rate</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Boost My Traffic</a>
+                    </div>
+                </div>
+
+                <!-- App Development -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="App Development">
+                    <div class="service-content">
+                        <h3>App Development</h3>
+                        <span class="price-tag">From ₹15,000</span>
+                        <p>Android/iOS apps optimized for Indian users and low-end devices.</p>
+                        <ul>
+                            <li>UI designed for Indian preferences</li>
+                            <li>Works offline (Jio-friendly)</li>
+                            <li>UPI/RuPay payment integration</li>
+                            <li>Play Store/App Store upload</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> 2-4 weeks delivery</span>
+                            <span><i class="fas fa-star"></i> 50+ live apps</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Build My App</a>
+                    </div>
+                </div>
+
+                <!-- CRM -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="CRM Tools">
+                    <div class="service-content">
+                        <h3>CRM Tools</h3>
+                        <span class="price-tag">From ₹10,000</span>
+                        <p>Affordable CRM solutions for Indian sales teams and small businesses.</p>
+                        <ul>
+                            <li>WhatsApp/Email automation</li>
+                            <li>GST invoice generation</li>
+                            <li>Hindi/English interface</li>
+                            <li>Android app included</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> 10 days setup</span>
+                            <span><i class="fas fa-star"></i> 30+ deployments</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Get Demo</a>
+                    </div>
+                </div>
+
+                <!-- POS -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="POS Systems">
+                    <div class="service-content">
+                        <h3>POS Systems</h3>
+                        <span class="price-tag">From ₹20,000</span>
+                        <p>Billing software for shops, restaurants, and pharmacies with Indian tax support.</p>
+                        <ul>
+                            <li>GST-compliant invoices</li>
+                            <li>Inventory management</li>
+                            <li>Works on low-spec PCs</li>
+                            <li>PhonePe/UPI payments</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> 1-week training</span>
+                            <span><i class="fas fa-star"></i> 100+ installations</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Request Demo</a>
+                    </div>
+                </div>
+
+                <!-- Custom Software -->
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Custom Software">
+                    <div class="service-content">
+                        <h3>Custom Software</h3>
+                        <span class="price-tag">Price on request</span>
+                        <p>Tailored solutions for manufacturing, schools, and local businesses.</p>
+                        <ul>
+                            <li>Built for your workflow</li>
+                            <li>On-premise/cloud hosting</li>
+                            <li>Multi-language support</li>
+                            <li>Lifetime maintenance*</li>
+                        </ul>
+                        <div class="service-meta">
+                            <span><i class="fas fa-clock"></i> 4+ weeks</span>
+                            <span><i class="fas fa-star"></i> Enterprise-grade</span>
+                        </div>
+                        <a href="#contact" class="btn" style="width: 100%; text-align: center; margin-top: 15px;">Discuss Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Our Tech Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5">
+                    <p>HTML5</p>
+                </div>
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3">
+                    <p>CSS3</p>
+                </div>
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React">
+                    <p>React</p>
+                </div>
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js">
+                    <p>Node.js</p>
+                </div>
+                <div class="tech-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Laravel.svg" alt="Laravel">
+                    <p>Laravel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <div class="container">
+            <h2>Need Something Custom?</h2>
+            <p>We build solutions for unique Indian business challenges. Get a free consultation!</p>
+            <a href="#contact" class="btn" style="background: white; color: var(--accent);">Talk To Experts</a>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919876543210?text=Hi%20Magical%20Web%20Team,%20I%20need%20help%20choosing%20a%20service!" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Animate service cards on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.service-card, .tech-item');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeIn 0.5s ease ${index * 0.1}s forwards`;
+                card.style.opacity = 0;
+            });
+        });
+    </script>
+</body>
+</html>

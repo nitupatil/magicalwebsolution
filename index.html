@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Web Development | Affordable Websites & Apps</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A42E6;
+            --dark: #333;
+            --light: #f9f9f9;
+            --accent: #FF6584;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: white;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-left: 5%;
+        }
+        .logo span {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            margin-right: 5%;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeIn 1s ease;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #666;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--dark);
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        /* Portfolio Slider */
+        .portfolio {
+            padding: 80px 0;
+            background: var(--light);
+        }
+        .swiper {
+            width: 100%;
+            padding: 30px 0;
+        }
+        .swiper-slide {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .portfolio-info {
+            padding: 20px;
+        }
+        .swiper-pagination-bullet-active {
+            background: var(--primary) !important;
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: white;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .pricing-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        .pricing-features li {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .popular-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 0 0 0 10px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Replace with hamburger menu later */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero {
+                padding: 150px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Magical<span>Web</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Affordable Web Development in <span>₹</span></h1>
+            <p>We build fast, scalable, and budget-friendly websites, apps, and software for Indian businesses. Starting from just ₹5,000!</p>
+            <a href="#contact" class="btn">Get Free Quote</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-code"></i></div>
+                    <h3>Website Development</h3>
+                    <p>From ₹5,000 - Responsive sites that convert visitors into customers.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+                    <h3>SEO Services</h3>
+                    <p>From ₹3,000/month - Rank higher on Google and get more leads.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>App Development</h3>
+                    <p>From ₹15,000 - Custom Android/iOS apps for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Slider -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Portfolio</h2>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/600x400?text=E-Commerce+Website" alt="Project 1">
+                        <div class="portfolio-info">
+                            <h3>E-Commerce Store</h3>
+                            <p>Built for a fashion brand with ₹ payment gateway.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/600x400?text=POS+System" alt="Project 2">
+                        <div class="portfolio-info">
+                            <h3>POS System</h3>
+                            <p>Custom billing software for retail shops.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://via.placeholder.com/600x400?text=SEO+Project" alt="Project 3">
+                        <div class="portfolio-info">
+                            <h3>SEO Campaign</h3>
+                            <p>Increased organic traffic by 300% in 3 months.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Pricing Plans</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Basic Website</h3>
+                    <div class="price">₹5,000<span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>5 Custom Pages</li>
+                        <li>Mobile Responsive</li>
+                        <li>Contact Form</li>
+                        <li>1 Month Support</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card" style="border: 2px solid var(--primary);">
+                    <div class="popular-badge">Popular</div>
+                    <h3>Business Website</h3>
+                    <div class="price">₹15,000<span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>10+ Pages</li>
+                        <li>SEO Optimized</li>
+                        <li>WhatsApp Integration</li>
+                        <li>3 Months Support</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>E-Commerce</h3>
+                    <div class="price">₹30,000<span>/one-time</span></div>
+                    <ul class="pricing-features">
+                        <li>Product Catalog</li>
+                        <li>₹ Payment Gateway</li>
+                        <li>Admin Panel</li>
+                        <li>6 Months Support</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919511864107?text=Hi%20Magical%20Web%20Team,%20I%20need%20a%20website!" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper (Portfolio Slider)
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        });
+
+        // Animate pricing cards on scroll
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.service-card, .pricing-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeIn 0.5s ease ${index * 0.2}s forwards`;
+                card.style.opacity = 0;
+            });
+        });
+    </script>
+</body>
+</html>
